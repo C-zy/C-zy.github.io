@@ -159,6 +159,97 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://supery.work/2020/08/22/WePY%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%A1%86%E6%9E%B6%E5%85%A5%E9%97%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/user.jpg">
+      <meta itemprop="name" content="supery">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="超级阳的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/22/WePY%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%A1%86%E6%9E%B6%E5%85%A5%E9%97%A8/" class="post-title-link" itemprop="url">WePY小程序框架入门</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-08-22 11:11:30 / 修改时间：11:33:13" itemprop="dateCreated datePublished" datetime="2020-08-22T11:11:30+08:00">2020-08-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86/" itemprop="url" rel="index"><span itemprop="name">前端知识</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>我原来开发小程序一直都是使用原生的代码来开发，现在为了方便就想学一种小程序的框架，到最后还是选了WePY这个框架，主要还是这个跟VUE很相似嘛，学习成本会比较底，这里使用的是WePY 2.X版本<br></p>
+</blockquote>
+<h2 id="WePY"><a href="#WePY" class="headerlink" title="WePY"></a>WePY</h2><blockquote>
+<p>WePY是小程序最早的框架之一，是一款让小程序支持组件化开发的框架，通过预编译的手段让开发者可以选择自己喜欢的开发风格去开发小程序。框架的细节优化，Promise，Async Functions的引入都是为了能让开发小程序项目变得更加简单，高效。<br></p>
+</blockquote>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ul>
+<li>使用 Vue Observer 实现数据绑定</li>
+<li>支持 Vue watch/computed/mixin 等特性</li>
+<li>基于原生组件实现组件化开发</li>
+<li>支持 TypeScript</li>
+</ul>
+<h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><h3 id="安装-更新"><a href="#安装-更新" class="headerlink" title="安装/更新"></a>安装/更新</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @wepy&#x2F;cli -g</span><br></pre></td></tr></table></figure>
+
+<h3 id="在开发目录生成开发DEMO"><a href="#在开发目录生成开发DEMO" class="headerlink" title="在开发目录生成开发DEMO"></a>在开发目录生成开发DEMO</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wepy init standard myproject</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装依赖文件"><a href="#安装依赖文件" class="headerlink" title="安装依赖文件"></a>安装依赖文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd myproject</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<h3 id="开发实时编译"><a href="#开发实时编译" class="headerlink" title="开发实时编译"></a>开发实时编译</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+
+<h3 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">dist</span><br><span class="line">node_modules</span><br><span class="line">src</span><br><span class="line">    components</span><br><span class="line">        com_a.wpy</span><br><span class="line">        com_b.wpy</span><br><span class="line">    pages</span><br><span class="line">        index.wpy</span><br><span class="line">        page2.wpy</span><br><span class="line">    app.wpy</span><br><span class="line">package.json</span><br></pre></td></tr></table></figure>
+
+<h3 id="开发者工具引进项目"><a href="#开发者工具引进项目" class="headerlink" title="开发者工具引进项目"></a>开发者工具引进项目</h3><p>使用微信开发者工具新建项目，本地开发选择项目根目录，会自动导入项目配置。</p>
+<h3 id="官方Demo代码"><a href="#官方Demo代码" class="headerlink" title="官方Demo代码"></a>官方Demo代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&lt;style lang&#x3D;&quot;less&quot;&gt;</span><br><span class="line">    @color: #4D926F;</span><br><span class="line">    .userinfo &#123;</span><br><span class="line">        color: @color;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line">&lt;template lang&#x3D;&quot;pug&quot;&gt;</span><br><span class="line">    div(class&#x3D;&#39;container&#39;)</span><br><span class="line">        div(class&#x3D;&#39;userinfo&#39; @tap&#x3D;&#39;tap&#39;)</span><br><span class="line">            mycom(:prop&#x3D;&#39;myprop&#39; @fn&#x3D;&#39;myevent&#39;)</span><br><span class="line">            text &#123;&#123;now&#125;&#125;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    import wepy from &#39;@wepy&#x2F;core&#39;;</span><br><span class="line"></span><br><span class="line">    wepy.page(&#123;</span><br><span class="line">        data: &#123;</span><br><span class="line">            myprop: &#123;&#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        computed: &#123;</span><br><span class="line">            now () &#123; return new Date().getTime(); &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        async onLoad() &#123;</span><br><span class="line">            await sleep(3);</span><br><span class="line">            console.log(&#39;Hello World&#39;);</span><br><span class="line">        &#125;,</span><br><span class="line">        sleep(time) &#123;</span><br><span class="line">            return new Promise((resolve, reject) &#x3D;&gt; setTimeout(resolve, time * 1000));</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line">&lt;config&gt;</span><br><span class="line">&#123;</span><br><span class="line">  usingComponents: &#123;</span><br><span class="line">    mycom: &quot;~@&#x2F;components&#x2F;some-component&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;config&gt;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://supery.work/2020/08/14/%E6%B7%B1%E5%9C%B3%E6%BC%82%E6%B5%81%E8%AE%B0%E4%BA%8C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -704,7 +795,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -717,7 +808,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -762,7 +853,7 @@
   </div>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共5k字</span>
+  <span class="post-count">博客全站共5.5k字</span>
 </div>
 
     <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
