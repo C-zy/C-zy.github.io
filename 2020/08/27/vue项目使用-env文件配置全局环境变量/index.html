@@ -20,19 +20,23 @@
     var CONFIG = {"hostname":"supery.work","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="2020年7月28日，今天我搭建了自己的个人博客并发布了第一篇文章，从今天起我会把我学到的技术全部分享到这个里面，希望我的知识可以帮助到你。">
+  <meta name="description" content="最近的项目需要修改一下打包的配置，所以一直在研究.env文件  文件名 关于文件名必须以固定的方式命名，如：  12345.env 全局默认配置文件，不论什么环境都会加载合并.env.development 开发环境下的配置文件.env.production 生产环境下的配置文件">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://supery.work/2020/07/28/hello-world/index.html">
+<meta property="og:title" content="vue项目使用.env文件配置全局环境变量">
+<meta property="og:url" content="http://supery.work/2020/08/27/vue%E9%A1%B9%E7%9B%AE%E4%BD%BF%E7%94%A8-env%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE%E5%85%A8%E5%B1%80%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/index.html">
 <meta property="og:site_name" content="超级阳的博客">
-<meta property="og:description" content="2020年7月28日，今天我搭建了自己的个人博客并发布了第一篇文章，从今天起我会把我学到的技术全部分享到这个里面，希望我的知识可以帮助到你。">
+<meta property="og:description" content="最近的项目需要修改一下打包的配置，所以一直在研究.env文件  文件名 关于文件名必须以固定的方式命名，如：  12345.env 全局默认配置文件，不论什么环境都会加载合并.env.development 开发环境下的配置文件.env.production 生产环境下的配置文件">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-07-28T04:24:35.314Z">
-<meta property="article:modified_time" content="2020-08-01T03:12:27.685Z">
+<meta property="article:published_time" content="2020-08-27T03:29:19.000Z">
+<meta property="article:modified_time" content="2020-08-27T04:08:52.740Z">
 <meta property="article:author" content="supery">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="vue">
+<meta property="article:tag" content="nodejs">
+<meta property="article:tag" content="webpack">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://supery.work/2020/07/28/hello-world/">
+<link rel="canonical" href="http://supery.work/2020/08/27/vue%E9%A1%B9%E7%9B%AE%E4%BD%BF%E7%94%A8-env%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE%E5%85%A8%E5%B1%80%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/">
 
 
 <script id="page-configurations">
@@ -45,7 +49,7 @@
   };
 </script>
 
-  <title>Hello World | 超级阳的博客</title>
+  <title>vue项目使用.env文件配置全局环境变量 | 超级阳的博客</title>
   
 
 
@@ -164,7 +168,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://supery.work/2020/07/28/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://supery.work/2020/08/27/vue%E9%A1%B9%E7%9B%AE%E4%BD%BF%E7%94%A8-env%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE%E5%85%A8%E5%B1%80%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/user.jpg">
@@ -177,7 +181,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hello World
+          vue项目使用.env文件配置全局环境变量
         </h1>
 
         <div class="post-meta">
@@ -186,23 +190,17 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-07-28 12:24:35" itemprop="dateCreated datePublished" datetime="2020-07-28T12:24:35+08:00">2020-07-28</time>
+              <time title="创建时间：2020-08-27 11:29:19 / 修改时间：12:08:52" itemprop="dateCreated datePublished" datetime="2020-08-27T11:29:19+08:00">2020-08-27</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-01 11:12:27" itemprop="dateModified" datetime="2020-08-01T11:12:27+08:00">2020-08-01</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%97%A5%E5%B8%B8/" itemprop="url" rel="index"><span itemprop="name">日常</span></a>
+                  <a href="/categories/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86/" itemprop="url" rel="index"><span itemprop="name">前端知识</span></a>
                 </span>
             </span>
 
@@ -225,7 +223,51 @@
 
       
         <blockquote>
-<p>2020年7月28日，今天我搭建了自己的个人博客并发布了第一篇文章，从今天起我会把我学到的技术全部分享到这个里面，希望我的知识可以帮助到你。</p>
+<p>最近的项目需要修改一下打包的配置，所以一直在研究.env文件</p>
+</blockquote>
+<h2 id="文件名"><a href="#文件名" class="headerlink" title="文件名"></a>文件名</h2><blockquote>
+<p>关于文件名必须以固定的方式命名，如：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.env 全局默认配置文件，不论什么环境都会加载合并</span><br><span class="line"></span><br><span class="line">.env.development 开发环境下的配置文件</span><br><span class="line"></span><br><span class="line">.env.production 生产环境下的配置文件</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h2 id="文件内容"><a href="#文件内容" class="headerlink" title="文件内容"></a>文件内容</h2><blockquote>
+<p>属性名必须以VUE_APP_开头，比如VUE_APP_XXX</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 开发环境配置</span><br><span class="line">ENV &#x3D; &#39;development&#39;</span><br><span class="line"># 管理系统&#x2F;开发环境</span><br><span class="line">VUE_APP_BASE_API &#x3D; &#39;&#x2F;dev-api&#39; </span><br><span class="line"># 路由懒加载</span><br><span class="line">VUE_CLI_BABEL_TRANSPILE_MODULES &#x3D; true</span><br></pre></td></tr></table></figure>
+
+<h2 id="文件加载"><a href="#文件加载" class="headerlink" title="文件加载"></a>文件加载</h2><blockquote>
+<p>根据启动命令vue会自动加载对应的环境，vue是根据文件名进行加载的,比如执行npm run serve命令，会自动加载.env.development文件</p>
+</blockquote>
+<blockquote>
+<p>打印process.env属性（全局属性，任何地方均可使用）</p>
+</blockquote>
+<h2 id="Vue项目中使用"><a href="#Vue项目中使用" class="headerlink" title="Vue项目中使用"></a>Vue项目中使用</h2><blockquote>
+<p>在使用Vue Cli构建的项目中，<br>需要将process.env 设置其他变量名进行使用，如：BUILD_ENV<br><br>在 package.json 的 script 字段中作如下配置：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">  &quot;start&quot;: &quot;cross-env BUILD_ENV&#x3D;dev node build&#x2F;dev-server.js&quot;,</span><br><span class="line">  &quot;dev&quot;: &quot;cross-env BUILD_ENV&#x3D;dev  node build&#x2F;dev-server.js&quot;,</span><br><span class="line">  &quot;build&quot;: &quot;cross-env BUILD_ENV&#x3D;dev node build&#x2F;build.js&quot;,</span><br><span class="line">  &quot;buildDev&quot;: &quot;cross-env BUILD_ENV&#x3D;dev  node build&#x2F;build.js&quot;,</span><br><span class="line">  &quot;buildStag&quot;: &quot;cross-env BUILD_ENV&#x3D;stag  node build&#x2F;build.js&quot;,</span><br><span class="line">  &quot;buildProd&quot;: &quot;cross-env BUILD_ENV&#x3D;prod  node build&#x2F;build.js&quot;,</span><br><span class="line">  &quot;unit&quot;: &quot;cross-env BABEL_ENV&#x3D;test karma start test&#x2F;unit&#x2F;karma.conf.js --single-run&quot;,</span><br><span class="line">  &quot;e2e&quot;: &quot;node test&#x2F;e2e&#x2F;runner.js&quot;,</span><br><span class="line">  &quot;test&quot;: &quot;npm run unit &amp;&amp; npm run e2e&quot;,</span><br><span class="line">  &quot;lint&quot;: &quot;eslint --ext .js,.vue src test&#x2F;unit&#x2F;specs test&#x2F;e2e&#x2F;specs&quot;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>由于搭配webpack重新设置了 process.env 的值，需要在webpack.dev.conf.js 及 webpack.prod.conf.js 文件中：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">webpack.dev.conf.js</span><br><span class="line">new webpack.DefinePlugin(&#123;</span><br><span class="line">    &#39;process.env&#39;: config.dev.env,</span><br><span class="line">    &#39;process.env.BUILD_ENV&#39;: JSON.stringify(process.env.BUILD_ENV)&#x2F;&#x2F;增加此行</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">webpack.prod.conf.js</span><br><span class="line">new webpack.DefinePlugin(&#123;</span><br><span class="line">    &#39;process.env&#39;: env,</span><br><span class="line">    &#39;process.env.BUILD_ENV&#39;: JSON.stringify(process.env.BUILD_ENV)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>即在该插件设置并暴露出 process.env 对象后，再增加process.env.BUILD_ENV 字段并进行赋值</p>
+</blockquote>
+<blockquote>
+<p>此时，可在前端JS文件中通过 process.env.BUILD_ENV 获得 package.json中的script获得对应值，进行其他操作，比如，引入不同环境的配置文件，如：<br><br>在config文件夹中增加 buildConfig 文件夹，其中新建以下3个文件：<br><br>dev.config.js stag.config.js prod.config.js,<br><br>在每个文件中采用module.exports的方式导出变量，如：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">    BASE_URL: &#39;https:&#x2F;&#x2F;dev-api.greigreat.com&#39;,</span><br><span class="line">    BASE_STATIC_URL:&#39;https:&#x2F;&#x2F;static1.greigreat.com&#x2F;&#39;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在其他文件中使用</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;引入环境配置文件</span><br><span class="line">&#x2F;&#x2F;process.env.BUILD_ENV 为 webpack中的DefinePlugin暴露出的环境变量</span><br><span class="line">const buildConfig &#x3D; require(&#39;.&#x2F;buildConfig&#x2F;&#39; + process.env.BUILD_ENV + &#39;.config&#39;)</span><br><span class="line">export default &#123;</span><br><span class="line">    baseUrl: buildConfig.BASE_URL,</span><br><span class="line">    baseStaticUrl: buildConfig.BASE_STATIC_URL</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>则可以以对象的形式获取 buildConfig并使用</p>
 </blockquote>
 
     </div>
@@ -262,7 +304,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://supery.work/2020/07/28/hello-world/" title="Hello World">http://supery.work/2020/07/28/hello-world/</a>
+    <a href="http://supery.work/2020/08/27/vue%E9%A1%B9%E7%9B%AE%E4%BD%BF%E7%94%A8-env%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE%E5%85%A8%E5%B1%80%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="vue项目使用.env文件配置全局环境变量">http://supery.work/2020/08/27/vue项目使用-env文件配置全局环境变量/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -272,17 +314,23 @@
 
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"># 前端</a>
+              <a href="/tags/vue/" rel="tag"># vue</a>
+              <a href="/tags/nodejs/" rel="tag"># nodejs</a>
+              <a href="/tags/webpack/" rel="tag"># webpack</a>
+          </div>
 
         
 
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2020/07/28/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="next" title="前端面试题">
-      前端面试题 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/08/26/build%E6%A0%B9%E6%8D%AE%E4%B8%8D%E5%90%8C%E5%8F%82%E6%95%B0%E6%89%93%E5%8C%85%E4%B8%8D%E5%90%8C%E7%8E%AF%E5%A2%83url/" rel="prev" title="npm run build根据不同参数打包不同环境url">
+      <i class="fa fa-chevron-left"></i> npm run build根据不同参数打包不同环境url
     </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -346,6 +394,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件名"><span class="nav-number">1.</span> <span class="nav-text">文件名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件内容"><span class="nav-number">2.</span> <span class="nav-text">文件内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件加载"><span class="nav-number">3.</span> <span class="nav-text">文件加载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue项目中使用"><span class="nav-number">4.</span> <span class="nav-text">Vue项目中使用</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
