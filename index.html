@@ -184,7 +184,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-09-15 10:07:48 / 修改时间：11:12:45" itemprop="dateCreated datePublished" datetime="2020-09-15T10:07:48+08:00">2020-09-15</time>
+              <time title="创建时间：2020-09-15 10:07:48 / 修改时间：11:19:57" itemprop="dateCreated datePublished" datetime="2020-09-15T10:07:48+08:00">2020-09-15</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -215,19 +215,14 @@
 <h2 id="在config文件夹下新建文件upload-js"><a href="#在config文件夹下新建文件upload-js" class="headerlink" title="在config文件夹下新建文件upload.js"></a>在config文件夹下新建文件upload.js</h2><blockquote>
 <p>附上js代码：</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">const ci &#x3D; require(&#39;miniprogram-ci&#39;)</span><br><span class="line"></span><br><span class="line">var version &#x3D; &#39;v2.2.3&#39;</span><br><span class="line">var desc &#x3D; new Date() + &#39;上传&#39;</span><br><span class="line"></span><br><span class="line">const project &#x3D; new ci.Project(&#123;</span><br><span class="line">  appid: &#39;wx8b0d887d58cfb8a6&#39;,</span><br><span class="line">  type: &#39;miniProgram&#39;,</span><br><span class="line">  projectPath: &#39;..&#x2F;..&#x2F;.&#39;,</span><br><span class="line">  privateKeyPath: &#39;.&#x2F;private.wx8b0d887d58cfb8a6.key&#39;,</span><br><span class="line">  ignores: [&#39;node_modules&#x2F;**&#x2F;*&#39;],</span><br><span class="line">&#125;)</span><br><span class="line">ci.upload(&#123;</span><br><span class="line">  project,</span><br><span class="line">  version,</span><br><span class="line">  desc,</span><br><span class="line">  setting: &#123;</span><br><span class="line">    minify: true,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;).then(res &#x3D;&gt; &#123;</span><br><span class="line">  console.log(res)</span><br><span class="line">  console.log(&#39;上传成功&#39;)</span><br><span class="line">&#125;).catch(error &#x3D;&gt; &#123;</span><br><span class="line">  if (error.errCode &#x3D;&#x3D; -1) &#123;</span><br><span class="line">    console.log(&#39;上传成功&#39;)</span><br><span class="line">  &#125;</span><br><span class="line">  console.log(error)</span><br><span class="line">  console.log(&#39;上传失败&#39;)</span><br><span class="line">  process.exit(-1)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>要注意的是wepy框架需要打包dist文件才能完成上传，获取到小程序的key后直接放到config目录下就可以，注意projectPath需要project.config.json 所在的目录。</p>
-</blockquote>
-<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><blockquote>
-<p>配置完成之后进入config文件夹下，执行命令：</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node upload.js</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>这样就会完成代码的上传，另外使用这个方法需要在小程序管理添加白名单，否则将无法进行上传</p>
-</blockquote>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/15/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BD%BF%E7%94%A8CI%E8%BF%9B%E8%A1%8C%E4%BB%A3%E7%A0%81%E4%B8%8A%E4%BC%A0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
