@@ -1,0 +1,108 @@
+<html lang="en" class="mdl-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="想和你一起呼呼">
+    <meta name="keywords" content="想和你一起呼呼">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>关注公众号:想和你一起呼呼</title>
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/chp.png">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="想和你一起呼呼">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <link rel="stylesheet" href="./huhucss/a.css">
+    <link rel="stylesheet" href="./huhucss/b.css">
+    <link rel="stylesheet" href="./huhucss/c.css">
+    <link rel="stylesheet" href="./huhucss/d.css">
+    <link rel="stylesheet" href="./huhucss/e.css">
+    <style>
+        #view-source {
+            position: fixed;
+            display: block;
+            right: 0;
+            bottom: 0;
+            margin-right: 40px;
+            margin-bottom: 40px;
+            z-index: 900;
+        }
+
+        a {
+            text-decoration: none
+        }
+
+        .img-responsive {
+            display: block;
+            height: auto;
+            max-width: 100%;
+        }
+
+        .panel-body:not(:nth-child(2)) {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+    <div class="mdl-layout__container has-scrolling-header">
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header is-small-screen has-tabs is-upgraded"
+            data-upgraded=",MaterialLayout">
+            <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--pink-600">
+
+                <div class="mdl-layout--large-screen-only mdl-layout__header-row" style="margin:30px">
+                    <h3>公众号：BlackLy</h3>
+                </div>
+                <div class="mdl-layout__tab-bar-container">
+                    <div class="mdl-layout__tab-bar-button mdl-layout__tab-bar-left-button"><i
+                            class="material-icons">chevron_left</i></div>
+                    <div class="mdl-layout__tab-bar mdl-color--pink">
+                        <a href="./index.html" class=" mdl-layout__tab ">诺基亚</a>
+                        <a href="./pyq.html" class=" mdl-layout__tab " style="text-transform: inherit">朋友圈文案</a>
+                        <a href="./chp.html" class=" mdl-layout__tab is-active" style="text-transform: inherit">彩虹屁文案</a>
+                        <a href="./dr.html" class=" mdl-layout__tab" style="text-transform: inherit">怼人文案</a>
+                    </div>
+                    <div class="mdl-layout__tab-bar-button mdl-layout__tab-bar-right-button"><i
+                            class="material-icons">chevron_right</i></div>
+                </div>
+            </header>
+            <main style="display: block;" class="aaa mdl-layout__content">
+                <div class="mdl-layout__tab-panel is-active" id="index">
+                    <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+                        <div class="mdl-card mdl-cell mdl-cell--12-col" style="height:200px">
+                            <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing"
+                                style="align-items: center; margin-top: 0px">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col is-upgraded"
+                                    data-upgraded=",MaterialTextfield">
+                                    <label class="mdl-textfield__input" type="text" id="txt_chp" value=" "> <iframe
+                                            src="https://chp.shadiao.app/api.php"></iframe></label>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="section--center mdl-grid mdl-grid--no-spacing">
+                        <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone"
+                            align="center">
+                            <a href="">
+                                <button style="margin-top: 20px;" class="mdl-button mdl-js-button mdl-button--raised  mdl-button--accent">
+                                    <i class="material-icons"></i><span id="span_random">再来一条</span>
+                                </button>
+                            </a>
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./js/zduan.js"></script>
+
+</body>
+
+</html>

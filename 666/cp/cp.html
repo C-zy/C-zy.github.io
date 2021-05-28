@@ -1,0 +1,145 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noarchive">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>月球船票预定</title>
+    <link type="text/css" rel="stylesheet" href="./css/1.css">
+    <style>
+        .ui-header-positive,
+        .ui-footer-positive {
+            background-color: #f05557;
+            color: #fff;
+        }
+
+        a {
+            color: #f05557;
+        }
+    </style>
+
+</head>
+
+<body ontouchstart="">
+    <header class="ui-header ui-header-positive ui-border-b">
+        <h1>月球船票预定</h1>
+    </header>
+    <div class="wrapper" style="position: relative;top: 45px;">
+        <img src="./assets/first111.png" width="100%">
+        <div class="ui-form" style=" margin-top: 10px; padding-bottom:10px">
+            <p style="margin-bottom: 15px; font-size: 14px !important;margin-top: 15px;text-align: center; color:#666">“
+                爱意或许会东升西落
+                但浪漫将在宇宙中心至死不渝 ”</p>
+            <form id="form" action='./cp_cp.html'>
+                <div class="ui-form-item " style="display: flex;">
+                    <label for="#">你的姓名：</label>
+                    <input id=name1 type="text" name="name1" placeholder="请输入你的姓名">
+                </div>
+                <div class="ui-form-item " style="display: flex;">
+                    <label for="#">Ta的姓名：</label>
+                    <input id=name2 type="text" name="name2" placeholder="请输入对方的姓名(单身可不填)">
+                </div>
+                <input id="button" style=' width: 60% !important;
+                margin:10px auto auto auto !important; background-color: #f75549;
+                background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0.5,#fc6156),to(#f75549));
+                color: #fff;
+                border-color: #f43d30;
+                -webkit-background-clip: padding-box;
+                background-clip: padding-box;' type="submit" class="ui-btn-lg" placeholder='提交'>
+            </form>
+        </div>
+        <a href="https://mp.weixin.qq.com/s/doqS9Bh2IigMoEqagXn-PQ">
+            <div
+                style="width: 80%;margin: 20px auto auto auto;text-align: center;font-size: 12px !important;padding: 10px;color: #000000;line-height: 30px;font-weight: bold;">
+                浩瀚太空向你靠近，星河万项是你的见面礼<br />我可能会撞上流星，我的宇宙船可能会耗光燃料<br />但我会赌上所有风险去见你</div>
+        </a>
+        <a href="https://mp.weixin.qq.com/s/doqS9Bh2IigMoEqagXn-PQ">
+            <div style='background-color:#008CBA;;
+            text-align: center;
+            bottom: 0px;
+            position: fixed;
+            color: white;
+            box-shadow: 0px 2px 6px rgba(0,0,0,0.12), 0px 1px 2px rgba(0,0,0,0.24);
+            line-height: 50px;
+            border-radius: 5px;
+            width: 50%;
+            right:0;height: 50px;'>点击这里关注公众号</div>
+        </a>
+        <a href="./hx.html">
+            <div style='background-color: #FC6170;
+            text-align: center;
+            color: white;
+            height: 50px;
+            bottom: 0px;
+            box-shadow: 0px 2px 6px rgba(0,0,0,0.12), 0px 1px 2px rgba(0,0,0,0.24);
+            border-radius: 5px;
+            position: fixed;
+            line-height: 50px;
+            width: 50%;
+            left: 0;'>点击这里预定火星船票</div>
+        </a>
+    </div>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <script>
+
+        // 平台、设备和操作系统 
+          var system ={ 
+                        win : false, 
+                        mac : false, 
+                        xll : false 
+                    };
+
+                    //检测平台 
+                    var p = navigator.platform; 
+                    system.win = p.indexOf("Win") == 0; 
+                    system.mac = p.indexOf("Mac") == 0; 
+                    system.x11 = (p == "X11") || (p.indexOf("Linux") == 0); 
+                    //跳转语句 
+                    if(system.win||system.mac||system.xll){//转向后台登陆页面 
+                        window.location.href="https://mp.weixin.qq.com/s/7fx7PIX01Brb9enLhwgrAw"; 
+                    }
+
+
+        document.onkeydown = document.onkeyup = document.onkeypress = function (event) {
+            var e = event || window.event || arguments.callee.caller.arguments[0];
+            if (e && e.keyCode == 123) {
+                e.returnValue = false;
+                return (false);
+            }
+        }
+        if (window.Event) {
+            document.captureEvents(Event.MOUSEUP);
+        }
+        function nocontextmenu() {
+            event.cancelBubble = true
+            event.returnValue = false;
+            return false;
+        }
+        function norightclick(e) {
+            if (window.Event) {
+                if (e.which == 2 || e.which == 3)
+                    return false;
+            } else if (event.button == 2 || event.button == 3) {
+                event.cancelBubble = true
+                event.returnValue = false;
+                return false;
+            }
+        }
+        document.oncontextmenu = nocontextmenu; // for IE5+
+        document.onmousedown = norightclick; // for all others
+        $(document).ready(function () {
+            $("#button").click(function () {
+                var name1 = $("#name1").val();
+                var name2 = $("name2").val();
+                console.log(name1)
+                if (name1 == '' || name2 == '') {
+                    alert("请输入完整再提交");
+                    return false
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
