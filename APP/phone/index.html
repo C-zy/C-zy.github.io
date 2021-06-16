@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<style>
+    * {
+	border: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+:root {
+	--hue: 223;
+	--l1: hsl(var(--hue),10%,100%);
+	--l2: hsl(var(--hue),10%,95%);
+	--l3: hsl(var(--hue),10%,90%);
+	--l4: hsl(var(--hue),10%,85%);
+	--l5: hsl(var(--hue),10%,80%);
+	--l6: hsl(var(--hue),10%,75%);
+	--l7: hsl(var(--hue),10%,70%);
+	--l8: hsl(var(--hue),10%,65%);
+	--text: hsl(var(--hue),10%,20%);
+	--r: hsl(3,90%,35%);
+	font-size: calc(16px + (24 - 16) * (100vw - 320px) / (1280 - 320));
+}
+body, 
+.phone__btn {
+	color: var(--text);
+	font: 1em/1.5 Nunito, sans-serif;
+}
+body {
+	background: var(--l5);
+	display: grid;
+	place-items: center;
+	height: 100vh;
+}
+.phone {
+	background: var(--l3);
+	border-radius: 0.5em;
+	box-shadow: 0.5em 0.5em 1em hsla(0,0%,0%,0.3);
+	padding: 0.5em;
+	position: relative;
+	width: 11em;
+	height: 32em;
+}
+.phone__antenna, 
+.phone__antenna:before, 
+.phone__antenna:after, 
+.phone__lock,
+.phone__battery,
+.phone__battery:before,
+.phone__screen-gloss, 
+.phone__screen-input {
+	position: absolute;
+}
+.phone__antenna {
+	filter: drop-shadow(0.5em 0.5em 1em hsla(0,0%,0%,0.3));
+	right: 1em;
+	bottom: 100%;
+	width: 1.5em;
+	height: 10em;
+	z-index: -1;
+}
+.phone__antenna:before, 
+.phone__antenna:after {
+	background: linear-gradient(90deg,hsl(var(--hue),10%,25%),hsl(var(--hue),10%,15%)) 50% 0 / 1.5em 100%;
+	content: "";
+	display: block;
+	height: 6em;
+}
+.phone__antenna:before {
+	border-radius: 0.5em 0.5em 0 0;
+	top: 0;
+	left: 0.25em;
+	width: 1em;
+}
+.phone__antenna:after {
+	border-radius: 0.75em 0.75em 0 0 / 3em 3em 0 0;
+	top: 4em;
+	left: 0;
+	width: 1.5em;
+}
+.phone__wrapper {
+	background:
+		linear-gradient(var(--l3) 6.75em,var(--l6) 7.25em 15.15em,var(--l3) 15.65em 26.75em,var(--l1) 27.35em 27.65em,var(--l3) 28.25em);
+	border-radius: 0.25em;
+	box-shadow:
+		0.25em 0.25em 0.25em var(--l6),
+		-0.25em -0.25em 0.25em var(--l1);
+	padding: 0.5em;
+	width: 10em;
+	height: 31em;
+}
+.phone__speaker {
+	background:
+		radial-gradient(0.4em 0.4em at 35% 50%,hsl(var(--hue),10%,10%) 45%,hsla(223,10%,10%,0) 50%),
+		radial-gradient(0.4em 0.4em at 50% 50%,hsl(var(--hue),10%,10%) 45%,hsla(223,10%,10%,0) 50%),
+		radial-gradient(0.4em 0.4em at 65% 50%,hsl(var(--hue),10%,10%) 45%,hsla(223,10%,10%,0) 50%);
+	border-radius: 1em;
+	box-shadow:
+		0.4em 0.4em 0.25em var(--l6) inset,
+		-0.4em -0.4em 0.25em var(--l1) inset;
+	margin-bottom: 0.75em;
+	height: 6em;
+}
+.phone__hide {
+	display: none;
+}
+.phone__lock, .phone__battery {
+	top: 0.75rem;
+}
+.phone__lock {
+	font-size: 0.5em;
+	line-height: 1;
+	left: 1rem;
+}
+.phone__battery {
+	--health: 70%;
+	background: linear-gradient(90deg,currentColor var(--health),#0000 calc(100% - var(--health))) 2px 50% / calc(100% - 4px) calc(100% - 4px) no-repeat;
+	border-radius: 0.1em;
+	box-shadow:
+		0 0 0 1px inset,
+		0 0 0.1em 1px hsla(180,90%,55%,0.7) inset,
+		0 0 0.1em hsla(180,90%,55%,0.7);
+	right: 1em;
+	margin-right: 0.1em;
+	width: 1em;
+	height: 0.5em;
+}
+.phone__battery:before {
+	background: currentColor;
+	border-radius: 0 100% 100% 0 / 0 50% 50% 0;
+	content: "";
+	display: block;
+	top: 0.1em;
+	left: 1.1em;
+	width: 0.1em;
+	height: 0.3em;
+}
+.phone__screen, 
+.phone__btn-group--3x4 {
+	margin-bottom: 1em;
+}
+.phone__screen, 
+.phone__screen-gloss {
+	border-radius: 0.25em;
+}
+.phone__screen, 
+.phone__screen-input {
+	color: hsl(180,90%,55%);
+	text-shadow: 0 0 0.25em hsla(180,90%,55%,0.7);
+	text-transform: uppercase;
+}
+.phone__screen {
+	background: hsl(var(--hue),10%,20%);
+	box-shadow: 0 0 0 0.5em hsl(var(--hue),10%,10%) inset;
+	position: relative;
+	height: 7.75em;
+}
+.phone__screen-gloss {
+	background: linear-gradient(30deg,hsla(223,10%,100%,0) 49%,hsla(223,10%,100%,0.05) 51%);
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.phone__screen-input {
+	background: transparent;
+	font: 1em/1 "Ubuntu Mono", monospace;
+	top: 2.25em;
+	left: 50%;
+	padding: 0;
+	resize: none;
+	width: 8ch;
+	height: calc(100% - 4.5em);
+	transform: translateX(-50%);
+}
+.phone__btn-group {
+	display: grid;
+	grid-template-columns: repeat(3,1fr);
+	grid-gap: 0.5em;
+	align-content: start;
+}
+.phone__btn-group--3x3 {
+	grid-template-rows: repeat(3,1em);
+	margin-bottom: 0.25em;
+}
+.phone__btn-group--3x3 .phone__btn:last-child {
+	grid-column: 3;
+}
+.phone__btn-group--3x4 {
+	grid-template-rows: repeat(4,1em);
+}
+.phone__btn {
+	background: linear-gradient(145deg,var(--l2),var(--l4));
+	border-radius: 0.15em;
+	box-shadow:
+		0.15em 0.15em 0.3em var(--l7),
+		-0.15em -0.15em 0.3em var(--l1);
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	-webkit-tap-highlight-color: transparent;
+}
+.phone__btn:active {
+	background: linear-gradient(145deg,var(--l4),var(--l2));
+}
+.phone__btn--l-align {
+	justify-content: flex-start;
+}
+.phone__btn-txt {
+	display: flex;
+	font-size: 0.75em;
+	pointer-events: none;
+}
+.phone__btn-txt--sm {
+	font-size: 0.5em;
+	margin-top: 0.125rem;
+}
+.phone__btn-txt--red {
+	color: var(--r);
+}
+.phone__bottom {
+	padding-top: 2.5em;
+	height: 3.75em;
+}
+.phone__bottom-hole {
+	background: hsl(var(--hue),10%,10%);
+	box-shadow:
+		0.1em 0.1em 0.1em var(--l3) inset,
+		-0.1em -0.1em 0.1em var(--l1) inset;
+	margin: auto;
+	width: 1.5em;
+	height: 0.75em;
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --l1: hsl(var(--hue),10%,50%);
+    --l2: hsl(var(--hue),10%,45%);
+    --l3: hsl(var(--hue),10%,40%);
+    --l4: hsl(var(--hue),10%,35%);
+    --l5: hsl(var(--hue),10%,30%);
+    --l6: hsl(var(--hue),10%,25%);
+    --l7: hsl(var(--hue),10%,20%);
+    --l8: hsl(var(--hue),10%,15%);
+    --text: hsl(var(--hue),10%,80%);
+	--r: hsl(3,90%,70%);
+  }
+}
+.myName{
+	font-size: 0.8em;
+	font-weight: bold;
+	position: fixed;
+	bottom: 1em;
+	right: 1em;
+}
+</style>
+<body>
+    <form class="phone" id="phone">
+        <div class="phone__antenna"></div>
+        <div class="phone__wrapper">
+            <div class="phone__speaker"></div>
+            <div class="phone__screen">
+                <div class="phone__lock"></div>
+                <div class="phone__battery"></div>
+                <textarea class="phone__screen-input" name="number" readonly maxlength="11">Ready</textarea>
+                <div  id="texts" class="phone__screen-gloss"></div>
+            </div>
+            <div class="phone__btn-group phone__btn-group--3x4">
+                <button class="phone__btn phone__btn--l-align" type="button" value="1">
+                    <span class="phone__btn-txt">1</span>
+                </button>
+                <button class="phone__btn phone__btn--l-align" type="button" value="2abc">
+                    <span class="phone__btn-txt">2</span>
+                    <span class="phone__btn-txt phone__btn-txt--sm">ABC</span>
+                </button>
+                <button class="phone__btn phone__btn--l-align" type="button" value="3def">
+                    <span class="phone__btn-txt">3</span>
+                    <span class="phone__btn-txt phone__btn-txt--sm">DEF</span>
+                </button>
+                <button class="phone__btn phone__btn--l-align" type="button" value="4ghi">
+                    <span class="phone__btn-txt">4</span>
+                    <span class="phone__btn-txt phone__btn-txt--sm">GHI</span>
+                </button>
+                <button class="phone__btn phone__btn--l-align" type="button" value="5jkl">
+                    <span class="phone__btn-txt">5</span>
+                    <span class="phone__btn-txt phone__btn-txt--sm">JKL</span>
+                </button>
+                <button class="phone__btn phone__btn--l-align" type="button" value="6mno">
+                    <span class="phone__btn-txt">6</span>
+                    <span class="phone__btn-txt phone__btn-txt--sm">MNO</span>
+                </button>
+                <button class="phone__btn phone__btn--l-align" type="button" value="7pqrs">
+                    <span class="phone__btn-txt">7</span>
+                    <span class="phone__btn-txt phone__btn-txt--sm">PRS</span>
+                </button>
+                <button class="phone__btn phone__btn--l-align" type="button" value="8tuv">
+                    <span class="phone__btn-txt">8</span>
+                    <span class="phone__btn-txt phone__btn-txt--sm">TUV</span>
+                </button>
+                <button class="phone__btn phone__btn--l-align" type="button" value="9wxy">
+                    <span class="phone__btn-txt">9</span>
+                    <span class="phone__btn-txt phone__btn-txt--sm">WXY</span>
+                </button>
+                <button class="phone__btn" type="button">
+                    <span class="phone__btn-txt">*</span>
+                </button>
+                <button class="phone__btn phone__btn--l-align" type="button" value="0opr">
+                    <span class="phone__btn-txt">0</span>
+                    <span class="phone__btn-txt phone__btn-txt--sm">OPR</span>
+                </button>
+                <button class="phone__btn" type="button">
+                    <span class="phone__btn-txt">#</span>
+                </button>
+            </div>
+            <div class="phone__btn-group phone__btn-group--3x3">
+                <button class="phone__btn" type="button" value="rcl">
+                    <span class="phone__btn-txt">Rcl</span>
+                </button>
+                <button class="phone__btn" type="button" value="clr">
+                    <span class="phone__btn-txt">Clr</span>
+                </button>
+                <button class="phone__btn" type="button" value="snd">
+                    <span class="phone__btn-txt phone__btn-txt--red">Snd</span>
+                </button>
+                <button class="phone__btn" type="button" value="sto">
+                    <span class="phone__btn-txt">Sto</span>
+                </button>
+                <button class="phone__btn" type="button" value="lock">
+                    <span class="phone__btn-txt">Lock</span>
+                </button>
+                <button class="phone__btn" type="button" value="end">
+                    <span class="phone__btn-txt">End</span>
+                </button>
+                <button class="phone__btn" type="button" value="pwr">
+                    <span class="phone__btn-txt">Pwr</span>
+                </button>
+                <button class="phone__btn" type="button">
+                    <span class="phone__btn-txt">Vol</span>
+                </button>
+            </div>
+            <div class="phone__bottom">
+                <div class="phone__bottom-hole"></div>
+            </div>
+        </div>
+    </form>
+	<div class="myName">SUPERY</div>
+	<audio src="" id="myaudio" controls="controls" hidden="true"></audio>
+    <script>
+		function autoPlay(e){
+			let num=e.split(' ')[1]
+			var myAuto = document.getElementById('myaudio');
+			if(num=='777'){
+				myAuto.src='./audio/11.mp3'
+            	myAuto.play();
+			}else if(num=='2233'){
+				myAuto.src='./audio/22.mp3'
+            	myAuto.play();
+			}else{
+				myAuto.src='./audio/an.mp3'
+            	myAuto.play();
+			}
+		}
+		function closePlay() {
+            var myAuto = document.getElementById('myaudio');
+            myAuto.pause();
+            myAuto.load();
+        }
+        document.addEventListener("DOMContentLoaded",() => {
+			const phone = new BrickPhone("#phone");
+		});
+
+		class BrickPhone {
+			constructor(el) {
+				this.el = document.querySelector(el);
+				this.isCalling = false;
+				this.isDialing = false;
+				this.isCycling = false;
+				this.cycleTimer = null;
+				this.callEndTimer = null;
+				this.cycleOption = 0;
+				this.charGroup = "";
+				this.lock = false;
+				this.memory = "";
+				this.power = true;
+
+				if (this.el) {
+					this.el.addEventListener("click",this.buttonAction.bind(this));
+					window.addEventListener("keydown",this.kbdInput.bind(this));
+				}
+			}
+			buttonAction(e) {
+				let tar = e.target || e;
+
+				if (tar) {
+					let val = tar.value;
+
+					if (val) {
+						// power
+						if (val == "pwr")
+							this.togglePower();
+
+						if (this.power) {
+							// key lock
+							if (val == "lock")
+								this.toggleLock();
+
+							if (!this.isCalling && !this.lock) {
+								// memory (RCL)
+								if (val == "rcl") {
+									if (this.memory) {
+										this.isDialing = true;
+										this.updateScreen(this.memory);
+									}
+
+								// memory (STO)
+								} else if (val == "sto") {
+									if (this.isDialing)
+										this.memory = this.el.number.value;
+										closePlay()
+								// clear
+								} else if (val == "clr") {
+									this.isDialing = false;
+									this.charGroup = "";
+									this.updateScreen("Ready");
+
+								// send
+								} else if (val == "snd") {
+									if (this.isDialing) {
+										this.isCalling = true;
+										this.isDialing = false;
+										this.charGroup = "";
+										this.updateScreen("Calling " + this.el.number.value);
+										autoPlay(this.el.number.value)
+									}
+
+								// power on
+								} else if (val == "pwr") {
+									this.updateScreen("Ready");
+
+								// enter number or letter
+								} else if (val != "lock" && val != "end") {
+									if (!this.isDialing) {
+										this.isDialing = true;
+										this.updateScreen("");
+									}
+
+									let number = this.el.number.value,
+										maxLen = this.el.number.maxLength;
+
+									if (number.length < maxLen) {
+										clearTimeout(this.cycleTimer);
+
+										// type character of different group
+										if (val != this.charGroup || val.length == 1) {
+											this.charGroup = val;
+											this.isCycling = false;
+											this.cycleOption = 0;
+										}
+
+										// start the new cycle or loop though the current
+										if (!this.isCycling) {
+											this.isCycling = true;
+
+										} else {
+											number = number.split("");
+											number.pop();
+											number = number.join("");
+										}
+
+										number += val[this.cycleOption];
+
+										// next option
+										++this.cycleOption;
+
+										if (this.cycleOption >= val.length)
+											this.cycleOption = 0;
+
+										// delay for typing the next number or letter
+										this.cycleTimer = setTimeout(() => {
+											this.isCycling = false;
+											this.cycleOption = 0;
+										},500);
+
+										this.updateScreen(number);
+									}
+								}
+
+							} else if (val == "end") {
+								if (this.isCalling) {
+									this.updateScreen("Call Ended");
+
+									this.callEndTimer = setTimeout(() => {
+										this.isCalling = false;
+										this.updateScreen("Ready");
+									},2e3);
+								}
+								closePlay()
+							}
+
+						} else {
+							this.isCalling = false;
+							this.charGroup = "";
+							this.lock = false;
+							this.memory = "";
+							this.power = false;
+							this.updateScreen("");
+						}
+					}
+				}
+			}
+			kbdInput(e) {
+				let c = e.code,
+					r = "";
+
+				switch (c) {
+					// 1
+					case "Digit1":
+					case "Numpad1":
+						r = "1";
+						break;
+					// 2
+					case "Digit2":
+					case "Numpad2":
+						r = "2abc";
+						break;
+					// 3
+					case "Digit3":
+					case "Numpad3":
+						r = "3def";
+						break;
+					// 4
+					case "Digit4":
+					case "Numpad4":
+						r = "4ghi";
+						break;
+					// 5
+					case "Digit5":
+					case "Numpad5":
+						r = "5jkl";
+						break;
+					// 6
+					case "Digit6":
+					case "Numpad6":
+						r = "6mno";
+						break;
+					// 7
+					case "Digit7":
+					case "Numpad7":
+						r = "7pqrs";
+						break;
+					// 8
+					case "Digit8":
+					case "Numpad8":
+						r = "8tuv";
+						break;
+					// 9
+					case "Digit9":
+					case "Numpad9":
+						r = "9wxy";
+						break;
+					// 0
+					case "Digit0":
+					case "Numpad0":
+						r = "0opr";
+						break;
+					// memory (RCL)
+					case "KeyR":
+						r = "rcl";
+						break;
+					// clear
+					case "KeyC":
+					case "NumLock":
+						r = "clr";
+						break;
+					// send
+					case "Enter":
+					case "NumpadEnter":
+						r = "snd";
+						break;
+					// memory (STO)
+					case "KeyS":
+						r = "sto";
+						break;
+					// lock
+					case "KeyL":
+						r = "lock";
+						break;
+					// end
+					case "Escape":
+					case "KeyE":
+						r = "end";
+						break;
+					// power
+					case "KeyP":
+						r = "pwr";
+						break;
+					// nothing
+					default:
+						break;
+				}
+
+				this.buttonAction({ value: r });
+			}
+			toggleLock() {
+				this.lock = !this.lock;
+
+				let lock = this.el.querySelector(".phone__lock");
+
+				if (lock)
+					lock.textContent = this.lock ? "Lock" : "";
+			}
+			togglePower() {
+				this.power = !this.power;
+				this.lock = false;
+
+				let lock = this.el.querySelector(".phone__lock"),
+					battery = this.el.querySelector(".phone__battery"),
+					hideClass = "phone__hide";
+
+				if (lock) {
+					lock.textContent = "";
+
+					if (this.power) {
+						lock.classList.remove(hideClass);
+						battery.classList.remove(hideClass);
+						
+					} else {
+						lock.classList.add(hideClass);
+						battery.classList.add(hideClass);
+					}
+				}
+			}
+			updateScreen(input) {
+				this.el.number.value = input;
+			}
+		}
+    </script>
+</body>
+</html>
