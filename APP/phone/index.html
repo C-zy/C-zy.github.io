@@ -357,7 +357,9 @@ body {
 		function autoPlay(e){
 			let num=e.split(' ')[1]
 			var myAuto = document.getElementById('myaudio');
-			if(num=='777'){
+			if(num.charAt(0)=='a'){
+				window.location.href='tel:'+num
+			}else if(num=='777'){
 				myAuto.src='./audio/11.mp3'
             	myAuto.play();
 			}else if(num=='2233'){
