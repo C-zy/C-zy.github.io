@@ -355,6 +355,22 @@ body {
 	<div class="myName">SUPERY</div>
 	<audio src="" id="myaudio" controls="controls" hidden="true"></audio>
     <script>
+		function setLog() {
+			document.onkeydown = function () {
+				var e = window.event || arguments[0];
+				if (e.keyCode == 123) {
+					return false;
+				} else if ((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)) {
+					return false;
+				} else if ((e.shiftKey) && (e.keyCode == 121)) {
+					return false;
+				}
+			};
+			document.oncontextmenu = function () {
+				return false;
+			}
+		}
+		setLog()
 		function autoPlay(e){
 			let num=e.split(' ')[1]
 			var myAuto = document.getElementById('myaudio');
