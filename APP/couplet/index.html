@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <title>Document</title>
+    <title>我是对穿肠</title>
 </head>
 <style>
     body{
@@ -50,11 +50,29 @@
     .box{
         width: 50%;
         text-align: center;
-        font-size: 20px;
+        font-size: 30px;
         font-weight: bold;
+        font-family: 隶书;
     }
     .box img{
         width: 80%;
+    }
+    .box .couplet{
+        width: 60px;
+        margin: 0 auto;
+        padding: 10px 0;
+        box-sizing: border-box;
+        background-color: #FF0000;
+    }
+    .box .couplet p{
+        margin: 10px auto;
+    }
+    .myName{
+        font-size: 0.8em;
+        font-weight: bold;
+        position: fixed;
+        bottom: 1em;
+        right: 1em;
     }
 </style>
 <body>
@@ -65,19 +83,21 @@
         </div>
         <div class="content">
             <div class="box">
-                <img src="./2.png"  alt="">
-                <div v-if='text1.length>0'>
+                <img src="./img/1.png"  alt="" @click='getAudio(1)'>
+                <div v-if='text1.length>0' class="couplet" @click='txt(1)'>
                     <p v-for='(item ,i) in text1'>{{item}}</p>
                 </div>
             </div>
             <div class="box">
-                <img src="./1.png"  alt="">
-                <div v-if='text2.length>0'>
+                <img src="./img/2.png"  alt="" @click='getAudio(2)'>
+                <div v-if='text2.length>0' class="couplet" @click='txt(2)'>
                     <p v-for='(item ,i) in text2'>{{item}}</p>
                 </div>
             </div>
         </div>
     </div>
+    <div class="myName">SUPERY</div>
+    <audio src="" id="myaudio" controls="controls" hidden="true"></audio>
     <script type="text/javascript">
         new Vue({
             el:'#app',
@@ -89,32 +109,59 @@
                 text1:[],
                 text2:[],
             },
-            computed:{
+            created(){
+                // this.setLog()
             },
             methods:{
-                // demo(){
-                //     var ajaxObj = new XMLHttpRequest();
-                //     ajaxObj.open('get', 'https://ai-backend.binwang.me/chat/couplet/'+this.message);
-                //     ajaxObj.send();
-                //     ajaxObj.onreadystatechange = function () {
-                //         if (ajaxObj.readyState == 4 && ajaxObj.status == 200) {
-                //             console.log('数据返回成功');
-                //             // console.log(ajaxObj.responseText);
-                //         }
-                //     }
-                // },
                 demo(){
                     let that=this
-                    axios({
-                        method:'get',
-                        url:this.api2+this.message
-                    }).then(function(res){
-                        console.log(res.data.data);
-                        let val=res.data.data
-                        that.data=val
-                        that.text1=val.keyword.split("")
-                        that.text2=val.text.split("")
-                    });
+                    if(this.message){
+                        axios({
+                            method:'get',
+                            url:this.api2+this.message
+                        }).then(function(res){
+                            console.log(res.data.data);
+                            let val=res.data.data
+                            that.data=val
+                            that.text1=val.keyword.split("")
+                            that.text2=val.text.split("")
+                            that.message=''
+                        });
+                    }
+                },
+                getAudio(i){
+                    var myAuto = document.getElementById('myaudio');
+                    if(i=='1'){
+                        myAuto.src='./audio/1.mp3'
+                    }else if(i=='2'){
+                        myAuto.src='./audio/2.mp3'
+                    }
+                    myAuto.play();
+                },
+                txt(i){
+                    let obj=''
+                    if(i=='1'){
+                        obj=this.data.keyword
+                    }else{
+                        obj=this.data.text
+                    }
+                    var utterThis = new window.SpeechSynthesisUtterance(obj);
+                    window.speechSynthesis.speak(utterThis);
+                },
+                setLog() {
+                    document.onkeydown = function () {
+                        var e = window.event || arguments[0];
+                        if (e.keyCode == 123) {
+                            return false;
+                        } else if ((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)) {
+                            return false;
+                        } else if ((e.shiftKey) && (e.keyCode == 121)) {
+                            return false;
+                        }
+                    };
+                    document.oncontextmenu = function () {
+                        return false;
+                    }
                 }
             },
         })
