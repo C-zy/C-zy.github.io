@@ -30,6 +30,7 @@ body {
   background-color: var(--bgcolor);
   color: #fff;
   font-family: "Saira Extra Condensed", sans-serif;
+  overflow: hidden;
 }
 .timeBox{
 	width: 100%;
