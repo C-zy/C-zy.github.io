@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Live 2D</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="assets/waifu.css"/>
+	    <script src="assets/jquery-3.1.1.min.js"></script>
+  		<script src="js/mui.min.js"></script>
+    	<link href="css/mui.css" rel="stylesheet"/>
+    	<link href="css/index.css" rel="stylesheet"/>
+    	<link href="css/iconfont.css" rel="stylesheet"/>
+	</head>
+	<body>
+		<!-- 时间 -->
+		<div class="timeBox">
+			<div class="clock">
+				<div class="flipper">
+				  <div class="gear"></div>
+				  <div class="gear"></div>
+				  <div class="top">
+					<div class="text">00</div>
+				  </div>
+				  <div class="bottom">
+					<div class="text">00</div>
+				  </div>
+				</div>
+				<div class="flipper">
+				  <div class="gear"></div>
+				  <div class="gear"></div>
+				  <div class="top">
+					<div class="text">00</div>
+				  </div>
+				  <div class="bottom">
+					<div class="text">00</div>
+				  </div>
+				</div>
+				<div class="flipper">
+				  <div class="gear"></div>
+				  <div class="gear"></div>
+				  <div class="top">
+					<div class="text">00</div>
+				  </div>
+				  <div class="bottom">
+					<div class="text">00</div>
+				  </div>
+				</div>
+			</div>
+		</div>
+	    <!-- live2D -->
+		<div class="waifu">
+	        <div class="waifu-tips"></div>
+	        <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+	        <div class="waifu-tool">
+	            <span class="fui-chat"></span>
+	            <span class="fui-eye"></span>
+	            <span class="fui-user"></span>
+	            <span class="fui-photo"></span>
+	            <span class="fui-info-circle"></span>
+	        </div>
+    	</div>
+    <script src="assets/waifu-tips.js"></script>
+	<script src="js/index.js"></script>
+    <script src="assets/live2d.js"></script>
+    <script type="text/javascript">initModel("assets/")</script>
+	</body>
+	<script>
+		$(document).ready(function () {
+			$('body').height($('body')[0].clientHeight);
+		});
+		$(window).resize(function(){
+			//$(".waifu").hide();
+		});
+		var onInput = false;
+		//var unInput = setTimeout(function(){},1000);
+		var unInput=null;
+		$("input").focus(function(){
+			onInput = true;
+			$(".waifu").css("position","absolute");
+			console.log($(".waifu")[0]);
+			if(unInput){
+				console.log("unInput:");
+				console.log(unInput);
+				clearTimeout(unInput);
+			}else{
+				console.log("unInput:");
+				console.log("null");
+			}
+		});
+		$("input").blur(function(){
+			onInput = false;
+			unInput=setTimeout('$(".waifu").css("position","fixed")',1000);
+		});
+		//滚动到底部(输入ing)
+		$(window).scroll(function(){
+			if (( $(document).scrollTop() + $(window).height() >= $(document).height() ) && onInput == true) {
+			    if(Math.round(Math.random())==0){
+					showMessage('输入时也不忘了看看我', 5000, true);
+				}else{
+					showMessage('喂，别看了，快点输入吧', 5000, true);
+				}
+			}
+		});
+		//Html5+ plus事件
+		document.addEventListener("plusready", onPlusReady, false); 
+		function onPlusReady(){
+			//应用切换到前台
+			document.addEventListener("resume",function(e){
+				console.log(e);
+				if(Math.round(Math.random())==0){
+					showMessage('刚刚又去哪里啦', 5000, true);
+				}else{
+					showMessage('嘿嘿，欢迎回来', 5000, true);
+				}
+			},false);
+			//网络环境变化
+			document.addEventListener("netchange",function(e){
+				var nt = plus.networkinfo.getCurrentType();
+				switch (nt){
+					case plus.networkinfo.CONNECTION_ETHERNET:
+					case plus.networkinfo.CONNECTION_WIFI:
+					showMessage('现在是无线网,我喜欢~', 5000, true);
+					break; 
+					case plus.networkinfo.CONNECTION_CELL2G:
+					case plus.networkinfo.CONNECTION_CELL3G:
+					case plus.networkinfo.CONNECTION_CELL4G:
+					showMessage('要用手机流量？我有点担心你的套餐呢', 5000, true);
+					break; 
+					default:
+					showMessage('突然没网了，你不要紧吧?', 5000, true);
+					break;
+				}
+			},false);
+		}
+		
+		//聊天
+		$(".sendmsg").on("click",function(){
+			var msg = $("#chatmsg").val();
+			$("#chatmsg").val("");
+			sendMsg(msg);
+		});
+		
+		function sendMsg(text){
+			$.ajax({
+				url:'https://openapi.tuling123.com/openapi/api/v2',
+				
+				type:"POST",
+				dataType:"json",
+				//contentType:"application/json; charset=utf-8",
+				data:JSON.stringify({
+					perception: {
+						inputText: {
+							text: text
+						}
+					},
+					userInfo: {
+						apiKey: "d7456407ee4b4c40a062e2a1a4b69365",
+						userId: "355581"
+					}
+				}),
+				success:function(data){
+					console.log(data);
+					msg = data.results[0].values.text;
+					showMessage(msg, 5000, true);
+				},
+				error:function (e){
+					showMessage('对不起，网络不太好，我现在有点迷糊听不清呢', 5000, true);
+					console.log(e);
+				}
+			});
+		}
+	</script>
+</html>

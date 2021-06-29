@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title></title>
+</head>
+<style>
+    body{
+        background-color: #bacac6;
+    }
+    .myName{
+        font-size: 0.8em;
+        font-weight: bold;
+        position: fixed;
+        bottom: 1em;
+        right: 1em;
+    }
+    .btn{
+        width: 90%;
+        text-align: center;
+        margin: 0 auto;
+        height: 50px;
+        background-color: #FFCC99;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+    }
+</style>
+<body>
+    <div id="app">
+        <div class="btn" @click='mr()'>优美的中国话</div>
+    </div>
+    <div class="myName">SUPERY</div>
+    <script type="text/javascript">
+        new Vue({
+            el:'#app',
+            data:{
+                toAudio:'http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=2&text=',
+                mrApi:'https://api.shadiao.app/nmsl?level=min',//骂人
+                piApi:'https://api.shadiao.app/chp',//彩虹屁
+                jtApi:'https://api.shadiao.app/du',//毒鸡汤
+                pyqApi:'https://api.shadiao.app/pyq',//朋友圈文案
+                message:'你好'
+            },
+            created(){
+                // this.setLog()
+            },
+            methods:{
+                mr(){
+                    console.log('999')
+                    let that=this
+                    axios({
+                        method:'get',
+                        url:that.pyqApi
+                    }).then(function(res){
+                        console.log(res);
+                    });
+                },
+                demo(){
+                    let that=this
+                    if(this.message){
+                        axios({
+                            method:'get',
+                            url:that.toAudio+that.message
+                        }).then(function(res){
+                            console.log(that.toAudio+encodeURI(res.data));
+
+                            let u=that.toAudio+encodeURI(res.data)
+                            var n=new Audio(u)
+                            n.src=u
+                            n.play()
+                        });
+                    }
+                },
+                txt(i){
+                    let obj=''
+                    if(i=='1'){
+                        obj=this.data.keyword
+                    }else{
+                        obj=this.data.text
+                    }
+                    var utterThis = new window.SpeechSynthesisUtterance(obj);
+                    window.speechSynthesis.speak(utterThis);
+                },
+                setLog() {
+                    document.onkeydown = function () {
+                        var e = window.event || arguments[0];
+                        if (e.keyCode == 123) {
+                            return false;
+                        } else if ((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)) {
+                            return false;
+                        } else if ((e.shiftKey) && (e.keyCode == 121)) {
+                            return false;
+                        }
+                    };
+                    document.oncontextmenu = function () {
+                        return false;
+                    }
+                }
+            },
+        })
+    </script>
+</body>
+</html>
