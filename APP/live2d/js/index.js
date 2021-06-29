@@ -58,3 +58,16 @@ $(function () {
   mysecond = $(".clock .flipper:nth-child(3) div:not(.new) .text");
   setTime();
 });
+// zy
+let orientation=0
+orientation=screen.orientation
+window.addEventListener('orientationchange', ()=>{
+	console.log(screen.orientation,'999');
+	orientation=screen.orientation
+	alert('屏幕反转',orientation.angle)
+}, true);
+if(orientation.angle=='0'){
+	alert('竖屏')
+}else if(orientation.angle=='90'){
+	alert('向左')
+}
