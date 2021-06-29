@@ -36,6 +36,11 @@ body {
 	width: 100%;
 	text-align: center;
 	margin-top: 100px;
+	transition: 1s;
+}
+.timeBoxL{
+	width: 50%;
+	float: right;
 }
 .clock {
 	margin: 0 auto;
@@ -189,6 +194,9 @@ body {
 }
 
 /* new */
+.modelBox{
+	transition: 1s;
+}
 .waifu{
 	width: 100%;
 	text-align: center;

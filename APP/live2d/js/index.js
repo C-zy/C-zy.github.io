@@ -62,12 +62,18 @@ $(function () {
 let orientation=0
 orientation=screen.orientation
 window.addEventListener('orientationchange', ()=>{
-	console.log(screen.orientation,'999');
 	orientation=screen.orientation
-	alert('屏幕反转',orientation.angle)
+	isReversal()
 }, true);
-if(orientation.angle=='0'){
-	alert('竖屏')
-}else if(orientation.angle=='90'){
-	alert('向左')
+function isReversal(){
+	if(orientation.angle=='0'){
+		// alert('竖屏')
+		$(".timeBoxL").removeClass("timeBoxL");
+		$(".waifuL").removeClass("waifuL");
+	}else if(orientation.angle=='90'){
+		// alert('向左')
+		$(".timeBox").addClass("timeBoxL");
+		$(".waifu").addClass("waifuL");
+	}
 }
+isReversal()
