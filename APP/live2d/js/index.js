@@ -70,7 +70,7 @@ function isReversal(){
 		// alert('竖屏')
 		$(".timeBoxL").removeClass("timeBoxL");
 		$(".waifuL").removeClass("waifuL");
-	}else if(orientation.angle=='90'){
+	}else{
 		// alert('向左')
 		$(".timeBox").addClass("timeBoxL");
 		$(".waifu").addClass("waifuL");
