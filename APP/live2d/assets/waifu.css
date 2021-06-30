@@ -13,6 +13,13 @@ html,body{
     transition: all .3s ease-in-out;
     -webkit-transform: translateY(3px);
     transform: translateY(3px);
+	width: 100%;
+	text-align: center;
+	margin: 0 auto;
+}
+.waifuL{
+	width: 50%;
+	float: left;
 }
 .waifu:hover {
     -webkit-transform: translateY(0);

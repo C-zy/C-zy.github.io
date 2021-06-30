@@ -26,7 +26,7 @@ live2d_settings['hitokotoAPI']          = 'lwl12.com';                  // 一�
 
 // 默认模型
 live2d_settings['modelId']              = 1;            // 默认模型 ID，可在 F12 控制台找到
-live2d_settings['modelTexturesId']      = 53;           // 默认材质 ID，可在 F12 控制台找到
+live2d_settings['modelTexturesId']      = 39;           // 默认材质 ID，可在 F12 控制台找到
 
 // 工具栏设置
 live2d_settings['showToolMenu']         = true;         // 显示 工具栏          ，可选 true(真), false(假)
@@ -39,7 +39,7 @@ live2d_settings['canTurnToHomePage']    = true;         // 显示 返回首页  
 live2d_settings['canTurnToAboutPage']   = true;         // 显示 跳转关于页  按钮，可选 true(真), false(假)
 
 // 模型切换模式
-live2d_settings['modelStorage']         = true;         // 记录 ID (刷新后恢复)，可选 true(真), false(假)
+live2d_settings['modelStorage']         = false;         // 记录 ID (刷新后恢复)，可选 true(真), false(假)
 live2d_settings['modelRandMode']        = 'switch';     // 模型切换，可选 'rand'(随机), 'switch'(顺序)
 live2d_settings['modelTexturesRandMode']= 'rand';       // 材质切换，可选 'rand'(随机), 'switch'(顺序)
 
@@ -52,7 +52,7 @@ live2d_settings['showCopyMessage']      = true;         // 显示 复制内容 �
 live2d_settings['showWelcomeMessage']   = true;         // 显示进入面页欢迎词
 
 //看板娘样式设置
-live2d_settings['waifuSize']            = '280x250';    // 看板娘大小，例如 '280x250', '600x535'
+live2d_settings['waifuSize']            = '320x300';    // 看板娘大小，例如 '280x250', '600x535'
 live2d_settings['waifuTipsSize']        = '250x70';     // 提示框大小，例如 '250x70', '570x150'
 live2d_settings['waifuFontSize']        = '14px';       // 提示框字体，例如 '12px', '30px'
 live2d_settings['waifuToolFont']        = '25px';       // 工具栏字体，例如 '14px', '36px'
@@ -96,8 +96,14 @@ console.log(re);
 
 function empty(obj) {return typeof obj=="undefined"||obj==null||obj==""?true:false}
 function getRandText(text) {return Array.isArray(text) ? text[Math.floor(Math.random() * text.length + 1)-1] : text}
-
+var timeoutflag=null
 function showMessage(text, timeout, flag) {
+	if(timeoutflag != null){
+	  clearTimeout(timeoutflag);
+	}
+	timeoutflag=setTimeout(function(){
+		voiceText(text)
+	},3000);
     if(flag || sessionStorage.getItem('waifu-text') === '' || sessionStorage.getItem('waifu-text') === null){
         if(Array.isArray(text)) text = text[Math.floor(Math.random() * text.length + 1)-1];
         if (live2d_settings.showF12Message) console.log('[Message]', text.replace(/<[^<>]+>/g,''));
@@ -109,6 +115,14 @@ function showMessage(text, timeout, flag) {
         if (timeout === undefined) timeout = 5000;
         hideMessage(timeout);
     }
+}
+function voiceText(str){
+	let obj=JSON.parse(localStorage.getItem("obj")).access_token;
+	var url = "https://tsn.baidu.com/text2audio?tex="+encodeURI(str)+"&lan=zh&cuid='00'&per=103&ctp=1&tok="+obj ;
+	var audio = new Audio(url);
+	audio.pause();
+	audio.src = url;
+	audio.play();
 }
 
 function hideMessage(timeout) {
