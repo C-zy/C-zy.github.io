@@ -1,10 +1,6 @@
 #landlord {
-   /* user-select: none;
-    position: fixed;
-    left: 30px;
-    bottom: 0; */
-    width: 280px;
-    height: 250px;
+    width: 6.5rem;
+    height: 6rem;
     z-index: 10000;
     font-size: 0;
     transition: all .3s ease-in-out;
@@ -13,6 +9,7 @@
 
 #live2d {
     position: relative;
+	/* transform:scale(0.5,0.5); */
 }
 
 .message {
