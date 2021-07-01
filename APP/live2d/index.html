@@ -5,10 +5,7 @@
 		<meta charset="UTF-8">
 		<title>Live 2D</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<!-- <link rel="stylesheet" type="text/css" href="assets/waifu.css"/> -->
-	    <script src="assets/jquery-3.1.1.min.js"></script>
-  		<!-- <script src="js/mui.min.js"></script>
-    	<link href="css/mui.css" rel="stylesheet"/> -->
+	    <script src="js/jquery-3.1.1.min.js"></script>
     	<link href="css/live2d.css" rel="stylesheet"/>
     	<link href="css/index.css" rel="stylesheet"/>
     	<link href="css/iconfont.css" rel="stylesheet"/>
@@ -51,28 +48,16 @@
 		</div>
 	    <!-- live2D -->
 		<div class="modelBox">
-			<!-- <div class="waifu-tips"></div>
-			<canvas id="live2d" width="280" height="250" class="live2d"></canvas> -->
-			<!-- <div class="waifu-tool">
-				<span class="fui-chat"></span>
-				<span class="fui-eye"></span>
-				<span class="fui-user"></span>
-				<span class="fui-photo"></span>
-				<span class="fui-info-circle"></span>
-			</div> -->
 			<div id="landlord">
 				<div class="message" style="opacity:0"></div>
 				<canvas id="live2d" width="280" height="250" class="live2d"></canvas>
-				<div class="hide-button">隐藏</div>
+				<!-- <div class="hide-button">隐藏</div> -->
 		 	</div>
 		</div>
 		
-    <!-- <script src="assets/waifu-tips.js"></script> -->
 	<script src="./js/live2d.js"></script>
 	<script src="./js/message.js"></script>
 	<script src="js/index.js"></script>
-    <!-- <script src="assets/live2d.js"></script> -->
-    <!-- <script type="text/javascript">initModel("assets/")</script> -->
 	</body>
 	<script>
 		loadlive2d("live2d", './model/platelets/index.json');
@@ -81,39 +66,6 @@
 			let obj=localStorage.getItem("obj")
 			if(!obj){
 				getToken()
-			}
-		});
-		$(window).resize(function(){
-			//$(".waifu").hide();
-		});
-		var onInput = false;
-		//var unInput = setTimeout(function(){},1000);
-		var unInput=null;
-		$("input").focus(function(){
-			onInput = true;
-			$(".waifu").css("position","absolute");
-			console.log($(".waifu")[0]);
-			if(unInput){
-				console.log("unInput:");
-				console.log(unInput);
-				clearTimeout(unInput);
-			}else{
-				console.log("unInput:");
-				console.log("null");
-			}
-		});
-		$("input").blur(function(){
-			onInput = false;
-			unInput=setTimeout('$(".waifu").css("position","fixed")',1000);
-		});
-		//滚动到底部(输入ing)
-		$(window).scroll(function(){
-			if (( $(document).scrollTop() + $(window).height() >= $(document).height() ) && onInput == true) {
-			    if(Math.round(Math.random())==0){
-					showMessage('输入时也不忘了看看我', 5000, true);
-				}else{
-					showMessage('喂，别看了，快点输入吧', 5000, true);
-				}
 			}
 		});
 		//Html5+ plus事件
@@ -208,7 +160,7 @@
 			audio.play();
 	   }
 	   $(".clock").on("click",function(){
-	   	showMessage('测试请求', 5000, true);
+	   	showMessage('你好啊', 5000, true);
 		voiceText('你好啊')
 	   });
 	</script>

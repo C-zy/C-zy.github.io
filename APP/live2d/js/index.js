@@ -83,11 +83,11 @@ function isReversal(){
 	if(orientation.angle=='0'){
 		// alert('竖屏')
 		$(".timeBoxL").removeClass("timeBoxL");
-		$(".waifuL").removeClass("waifuL");
+		$(".modelBoxL").removeClass("modelBoxL");
 	}else{
 		// alert('向左')
 		$(".timeBox").addClass("timeBoxL");
-		$(".waifu").addClass("waifuL");
+		$(".modelBox").addClass("modelBoxL");
 	}
 }
 isReversal()

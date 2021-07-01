@@ -1,13 +1,14 @@
 #landlord {
-    user-select: none;
+   /* user-select: none;
     position: fixed;
     left: 30px;
-    bottom: 0;
+    bottom: 0; */
     width: 280px;
     height: 250px;
     z-index: 10000;
     font-size: 0;
     transition: all .3s ease-in-out;
+	margin: 0 auto;
 }
 
 #live2d {
@@ -20,8 +21,8 @@
     height: auto;
     margin: auto;
     padding: 7px;
-    top: -80px;
-    left: -10px;
+    top: -46px;
+    left: 10px;
     text-align: center;
     border: 1px solid rgba(255,137,255,.4);
     border-radius: 12px;
