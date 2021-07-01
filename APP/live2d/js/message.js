@@ -33,7 +33,7 @@ re.toString = function() {
 // $(document).on('click', function (){
 //     showMessage('5你都复制了些什么呀，转载要记得加上出处哦~~', 5000);
 // });
-var message_Path = '../txt/message.jsonmessage.json'
+var message_Path = '../live2d/message.jsonmessage.json'
 var home_Path = 'https://supery.work/'
 function initTips(){
     $.ajax({
