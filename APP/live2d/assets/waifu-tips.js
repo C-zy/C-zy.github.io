@@ -98,12 +98,12 @@ function empty(obj) {return typeof obj=="undefined"||obj==null||obj==""?true:fal
 function getRandText(text) {return Array.isArray(text) ? text[Math.floor(Math.random() * text.length + 1)-1] : text}
 var timeoutflag=null
 function showMessage(text, timeout, flag) {
-	if(timeoutflag != null){
-	  clearTimeout(timeoutflag);
-	}
-	timeoutflag=setTimeout(function(){
-		voiceText(text)
-	},3000);
+	// if(timeoutflag != null){
+	//   clearTimeout(timeoutflag);
+	// }
+	// timeoutflag=setTimeout(function(){
+	// 	voiceText(text)
+	// },3000);
     if(flag || sessionStorage.getItem('waifu-text') === '' || sessionStorage.getItem('waifu-text') === null){
         if(Array.isArray(text)) text = text[Math.floor(Math.random() * text.length + 1)-1];
         if (live2d_settings.showF12Message) console.log('[Message]', text.replace(/<[^<>]+>/g,''));
@@ -117,12 +117,17 @@ function showMessage(text, timeout, flag) {
     }
 }
 function voiceText(str){
-	let obj=JSON.parse(localStorage.getItem("obj")).access_token;
-	var url = "https://tsn.baidu.com/text2audio?tex="+encodeURI(str)+"&lan=zh&cuid='00'&per=103&ctp=1&tok="+obj ;
-	var audio = new Audio(url);
-	audio.pause();
-	audio.src = url;
-	audio.play();
+    if(timeoutflag != null){
+	  clearTimeout(timeoutflag);
+	}
+	timeoutflag=setTimeout(function(){
+		let obj=JSON.parse(localStorage.getItem("obj")).access_token;
+        var url = "https://tsn.baidu.com/text2audio?tex="+encodeURI(str)+"&lan=zh&cuid='00'&per=103&ctp=1&tok="+obj ;
+        var audio = new Audio(url);
+        audio.pause();
+        audio.src = url;
+        audio.play();
+	},3000);
 }
 
 function hideMessage(timeout) {
