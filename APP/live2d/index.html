@@ -5,10 +5,11 @@
 		<meta charset="UTF-8">
 		<title>Live 2D</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<link rel="stylesheet" type="text/css" href="assets/waifu.css"/>
+		<!-- <link rel="stylesheet" type="text/css" href="assets/waifu.css"/> -->
 	    <script src="assets/jquery-3.1.1.min.js"></script>
-  		<script src="js/mui.min.js"></script>
-    	<link href="css/mui.css" rel="stylesheet"/>
+  		<!-- <script src="js/mui.min.js"></script>
+    	<link href="css/mui.css" rel="stylesheet"/> -->
+    	<link href="css/live2d.css" rel="stylesheet"/>
     	<link href="css/index.css" rel="stylesheet"/>
     	<link href="css/iconfont.css" rel="stylesheet"/>
 	</head>
@@ -49,9 +50,9 @@
 			</div>
 		</div>
 	    <!-- live2D -->
-		<div class="waifu">
-			<div class="waifu-tips"></div>
-			<canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+		<div class="modelBox">
+			<!-- <div class="waifu-tips"></div>
+			<canvas id="live2d" width="280" height="250" class="live2d"></canvas> -->
 			<!-- <div class="waifu-tool">
 				<span class="fui-chat"></span>
 				<span class="fui-eye"></span>
@@ -59,14 +60,22 @@
 				<span class="fui-photo"></span>
 				<span class="fui-info-circle"></span>
 			</div> -->
+			<div id="landlord">
+				<div class="message" style="opacity:0"></div>
+				<canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+				<div class="hide-button">隐藏</div>
+		 	</div>
 		</div>
 		
-    <script src="assets/waifu-tips.js"></script>
+    <!-- <script src="assets/waifu-tips.js"></script> -->
+	<script src="./js/live2d.js"></script>
+	<script src="./js/message.js"></script>
 	<script src="js/index.js"></script>
-    <script src="assets/live2d.js"></script>
-    <script type="text/javascript">initModel("assets/")</script>
+    <!-- <script src="assets/live2d.js"></script> -->
+    <!-- <script type="text/javascript">initModel("assets/")</script> -->
 	</body>
 	<script>
+		loadlive2d("live2d", './model/platelets/index.json');
 		$(document).ready(function () {
 			$('body').height($('body')[0].clientHeight);
 			let obj=localStorage.getItem("obj")
@@ -191,13 +200,13 @@
 				}
 			});
 		}
-		// function voiceText(str){
-		// 	let obj=JSON.parse(localStorage.getItem("obj")).access_token;
-		// 	var url = "https://tsn.baidu.com/text2audio?tex="+encodeURI(str)+"&lan=zh&cuid='00'&per=103&ctp=1&tok="+obj ;
-		// 	var audio = new Audio(url);
-		// 	audio.src = url;
-		// 	audio.play();
-	 //   }
+		function voiceText(str){
+			let obj=JSON.parse(localStorage.getItem("obj")).access_token;
+			var url = "https://tsn.baidu.com/text2audio?tex="+encodeURI(str)+"&lan=zh&cuid='00'&per=103&ctp=1&tok="+obj ;
+			var audio = new Audio(url);
+			audio.src = url;
+			audio.play();
+	   }
 	   $(".clock").on("click",function(){
 	   	showMessage('测试请求', 5000, true);
 		voiceText('你好啊')

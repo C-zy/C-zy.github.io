@@ -42,7 +42,11 @@ body {
 .timeBoxL{
 	width: 50%;
 	float: right;
-	margin-right: 60px;
+	margin-right: 40px;
+}
+.modelBox{
+  width: 100%;
+  text-align: center;
 }
 .clock {
 	margin: 0 auto;
