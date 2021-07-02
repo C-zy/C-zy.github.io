@@ -63,10 +63,10 @@
 		loadlive2d("live2d", './model/platelets/index.json');
 		$(document).ready(function () {
 			$('body').height($('body')[0].clientHeight);
-			let obj=localStorage.getItem("obj")
-			if(!obj){
-				getToken()
-			}
+			// let obj=localStorage.getItem("obj")
+			// if(!obj){
+			// 	getToken()
+			// }
 		});
 		//Html5+ plus事件
 		document.addEventListener("plusready", onPlusReady, false); 
@@ -153,7 +153,8 @@
 			});
 		}
 		function voiceText(str){
-			let obj=JSON.parse(localStorage.getItem("obj")).access_token;
+			// let obj=JSON.parse(localStorage.getItem("obj")).access_token;
+			let obj='24.7f6dab8f59507549b5a94b7d66d451f3.2592000.1627807903.282335-24459871'
 			var url = "https://tsn.baidu.com/text2audio?tex="+encodeURI(str)+"&lan=zh&cuid='00'&per=103&ctp=1&tok="+obj ;
 			var audio = new Audio(url);
 			audio.src = url;
