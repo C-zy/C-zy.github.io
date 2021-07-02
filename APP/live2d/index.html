@@ -161,8 +161,12 @@
 			audio.play();
 	   }
 	   $(".clock").on("click",function(){
-	   	showMessage('你好啊', 5000, true);
-		voiceText('你好啊')
+		var myDate = new Date();
+		let hours = myDate.getHours();
+		let minuts = myDate.getMinutes();
+		let msg = `现在时间是${hours}点${minuts}分`
+		showMessage(msg, 5000, true);
+		voiceText(msg)
 	   });
 	</script>
 </html>
