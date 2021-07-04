@@ -81,11 +81,9 @@ window.addEventListener('orientationchange', ()=>{
 }, true);
 function isReversal(){
 	if(orientation.angle=='0'){
-		// alert('竖屏')
 		$(".timeBoxL").removeClass("timeBoxL");
 		$(".modelBoxL").removeClass("modelBoxL");
 	}else{
-		// alert('向左')
 		$(".timeBox").addClass("timeBoxL");
 		$(".modelBox").addClass("modelBoxL");
 	}
@@ -106,3 +104,19 @@ function requestFullScreen(element) {
 $('body').click(function () {
    requestFullScreen(document.documentElement);
 })
+function setLog() {
+	document.onkeydown = function () {
+		var e = window.event || arguments[0];
+		if (e.keyCode == 123) {
+			return false;
+		} else if ((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)) {
+			return false;
+		} else if ((e.shiftKey) && (e.keyCode == 121)) {
+			return false;
+		}
+	};
+	document.oncontextmenu = function () {
+		return false;
+	}
+}
+setLog()

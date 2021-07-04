@@ -61,7 +61,13 @@
     border: 1px solid #f4a7b9;
     background: #f4f6f8;
 }
-
+#zy{
+	position: fixed;
+	right: 10px;
+	bottom: 10px;
+	font-size: .2rem;
+	z-index: 99;
+}
 
 @keyframes shake {
     2% {
